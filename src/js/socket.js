@@ -6,7 +6,7 @@ function initConnection() {
     socket = new WebSocket(URL);
 
     socket.onopen = () => {
-        console.log('socket connected');
+        console.log('user connected');
     };
 
     socket.onmessage = (msg) => { // что бы получить смс
