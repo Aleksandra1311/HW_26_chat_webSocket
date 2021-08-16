@@ -9,23 +9,23 @@ function initConnection() {
         console.log('user connected');
     };
 
-    socket.onmessage = (msg) => { // что бы получить смс
+    socket.onmessage = (msg) => {
         const data = JSON.parse(msg.data);
         // move(data.payload.x, data.payload.y);
         showChatBoxMsg(data);
     };
 
-    socket.onclose = () => { // когда кто то захотел сам завершить и закрыть трубу
+    socket.onclose = () => {
         initConnection();
         console.log('closest');
     };
 
-    socket.onerror = (err) => { // отбыв трубы
+    socket.onerror = (err) => {
         console.log('error massage', err);
     };
 }
 
-function send(msg) { // что бы отправить смс
+function send(msg) {
     if (socket.readyState === WebSocket.OPEN) {
         socket.send(JSON.stringify(msg))
     }
